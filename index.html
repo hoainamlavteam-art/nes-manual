@@ -1,2 +1,161 @@
-﻿<a href="NES_DrawingList.html">1. Quản lý danh mục bản vẽ</a>
-<a href="NES_DimTool.html">2. Tiện ích Dim</a>
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NES_TOOL - Trung tâm tài liệu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* --- CẤU HÌNH CƠ BẢN --- */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0f172a; 
+            color: #e2e8f0; 
+            scroll-behavior: smooth; 
+            line-height: 1.5; 
+        }
+        
+        /* --- HỆ THỐNG 4 CỠ CHỮ THỐNG NHẤT TUYỆT ĐỐI --- */
+        .lvl-1 { 
+            font-size: 3.75rem; /* ~60px */
+            font-weight: 900; 
+            letter-spacing: -0.05em; 
+            line-height: 1.1; 
+        }
+        .lvl-2 { 
+            font-size: 2.5rem; /* ~40px */
+            font-weight: 900; 
+            letter-spacing: -0.025em; 
+            line-height: 1.2; 
+            font-style: italic;
+        }
+        .lvl-3 { 
+            font-size: 1.125rem; /* 18px */
+            font-weight: 700; 
+            text-transform: uppercase; 
+            line-height: 1.4; 
+        }
+        .body-text { 
+            font-size: 0.875rem; /* 14px */
+            font-weight: 400;
+            line-height: 1.6; 
+        }
+
+        /* --- COMPONENT & HIỆU ỨNG ĐỒNG BỘ --- */
+        .glass-panel { 
+            background: rgba(30, 41, 59, 0.7); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 16px; 
+        }
+        .section-tag { 
+            background: rgba(59, 130, 246, 0.1); 
+            color: #60a5fa; 
+            padding: 4px 12px; 
+            border-radius: 99px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+        }
+        .logo-glow { 
+            filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.6)); 
+            transition: all 0.5s ease; 
+        }
+        .logo-glow:hover { 
+            filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.9)); 
+            transform: scale(1.05); 
+        }
+        
+        /* Hiệu ứng cho thẻ Link */
+        .card-link { 
+            display: block; 
+            border: 2px solid rgba(51, 65, 85, 0.5); 
+            border-radius: 16px; 
+            background: rgba(30, 41, 59, 0.4); 
+            backdrop-filter: blur(10px); 
+            padding: 2.5rem 2rem; 
+            transition: all 0.3s ease; 
+            text-decoration: none; 
+        }
+        .card-link:hover { 
+            border-color: #3b82f6; 
+            transform: translateY(-8px); 
+            box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.25); 
+            background: rgba(30, 41, 59, 0.8); 
+        }
+        .card-icon-wrapper { 
+            width: 80px; 
+            height: 80px; 
+            background: rgba(15, 23, 42, 0.5); 
+            border-radius: 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-bottom: 1.5rem; 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="max-w-[1150px] mx-auto px-6 py-16 space-y-24">
+
+        <!-- HEADER SECTION -->
+        <header class="flex flex-col md:flex-row items-center justify-between glass-panel p-10 gap-8 border-b-4 border-blue-500 shadow-2xl relative overflow-hidden">
+            <!-- Decorative light effect -->
+            <div class="absolute -top-24 -left-24 w-48 h-48 bg-blue-600 opacity-10 blur-[100px]"></div>
+            
+            <div class="flex items-center gap-10 relative z-10">
+                <img src="images/NESLOGO.png" alt="NES Logo" class="h-28 w-auto logo-glow object-contain">
+                <div>
+                    <div class="section-tag body-text mb-3 inline-block">Tool AutoCad NES TOOL</div>
+                    <h1 class="lvl-1 text-white uppercase tracking-tighter">HƯỚNG DẪN SỬ DỤNG</h1>
+                    <p class="body-text text-slate-400 mt-4 max-w-xl text-justify">Đây là list hướng dẫn sử dụng các tính năng của NES TOOL. Vui lòng click vào thẻ tương ứng bên dưới để xem nội dung.</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN LINKS SECTION -->
+        <section>
+            <div class="text-center space-y-4 mb-12">
+                <h2 class="lvl-2 text-white">Danh mục tiện ích</h2>
+                <p class="body-text text-slate-500 italic">"Giải pháp tự động hóa toàn diện cho kỹ sư AutoCAD."</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- CARD 1: DRAWING LIST -->
+                <a href="NES_DrawingList.html" class="card-link group">
+                    <div class="card-icon-wrapper group-hover:border-blue-500 transition-colors">
+                        <img src="images/NES_DrawingList.png" alt="DrawingList" class="h-12 w-auto logo-glow object-contain">
+                    </div>
+                    <h3 class="lvl-3 text-white group-hover:text-blue-400 transition-colors mb-2">1. Quản lý danh mục bản vẽ</h3>
+                    <div class="body-text text-blue-500 font-bold mb-4 uppercase tracking-widest">Lệnh: NES_DRAWINGLIST</div>
+                    <p class="body-text text-slate-400 text-justify">Hệ thống quản lý danh mục bản vẽ thông minh, hỗ trợ trích xuất Title Block tự động, đồng bộ Sheet Set Manager và xử lý dữ liệu hàng loạt qua bảng tính ReoGrid.</p>
+                </a>
+                
+                <!-- CARD 2: DIM TOOL -->
+                <a href="NES_DimTool.html" class="card-link group">
+                    <div class="card-icon-wrapper group-hover:border-blue-500 transition-colors">
+                        <img src="images/NES_DIMTOOL.png" alt="DimTool" class="h-12 w-auto logo-glow object-contain">
+                    </div>
+                    <h3 class="lvl-3 text-white group-hover:text-blue-400 transition-colors mb-2">2. Tiện ích Dimension</h3>
+                    <div class="body-text text-orange-400 font-bold mb-4 uppercase tracking-widest">Lệnh: NES_DIMTOOL</div>
+                    <p class="body-text text-slate-400 text-justify">Giải pháp giải quyết triệt để các bài toán đo đạc phức tạp nhất. Tự động ghi kích thước, gộp/chia Dim, tính bậc thang và quản lý dữ liệu tập trung qua giao diện Modeless.</p>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="pt-12 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6 pb-12 opacity-80">
+            <div class="body-text uppercase tracking-widest font-black text-slate-500 opacity-50">
+                © 2026 NES_Tool System. Hướng dẫn sử dụng người dùng.
+            </div>
+
+        </footer>
+
+    </div>
+
+</body>
+</html>
