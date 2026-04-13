@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NES_DRAWINGLIST - Hướng dẫn sử dụng chi tiết</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0f172a; 
+            color: #e2e8f0; 
+            scroll-behavior: smooth; 
+            line-height: 1.5;
+        }
+        .glass-panel { 
+            background: rgba(30, 41, 59, 0.7); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 16px; 
+        }
+        .section-tag { 
+            background: rgba(59, 130, 246, 0.1); 
+            color: #60a5fa; 
+            padding: 4px 12px; 
+            border-radius: 99px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+        }
+        .ui-screenshot { 
+            border: 2px solid #334155; 
+            border-radius: 12px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6); 
+            transition: transform 0.3s ease; 
+            width: 100%; 
+            display: block;
+        }
+        .feature-card { 
+            border-left: 4px solid #3b82f6; 
+            background: rgba(51, 65, 85, 0.4); 
+            padding: 1.25rem; 
+            border-radius: 0 12px 12px 0; 
+        }
+
+        /* --- HỆ THỐNG 4 CỠ CHỮ THỐNG NHẤT --- */
+        .lvl-1 { 
+            font-size: 3.75rem; /* ~60px */
+            font-weight: 900; 
+            letter-spacing: -0.05em; 
+            line-height: 1.1; 
+        }
+        .lvl-2 { 
+            font-size: 2.5rem; /* ~40px */
+            font-weight: 900; 
+            letter-spacing: -0.025em; 
+            line-height: 1.2; 
+        }
+        .lvl-3 { 
+            font-size: 1.125rem; /* 18px */
+            font-weight: 700; 
+            text-transform: uppercase; 
+            line-height: 1.4; 
+        }
+        .body-text { 
+            font-size: 0.875rem; /* 14px */
+            font-weight: 400;
+            line-height: 1.6; 
+        }
+
+        .text-accent { color: #60a5fa; }
+        .text-orange { color: #f39c12; }
+        .text-green { color: #10b981; }
+        .highlight-box { background: rgba(59, 130, 246, 0.05); border: 1px dashed rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 1.25rem; }
+        
+        /* Hiệu ứng Logo Sáng tạo */
+        .logo-glow {
+            filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.6));
+            transition: all 0.5s ease;
+        }
+        .logo-glow:hover {
+            filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.9));
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="fixed top-6 left-6 z-50">
+        <a href="index.html" class="flex items-center gap-2 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 backdrop-blur-md border border-white/10 rounded-full text-sm font-semibold text-white transition-all shadow-lg group">
+            <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Trang chủ
+        </a>
+    </div>
+    <div class="max-w-[1150px] mx-auto px-6 py-16 space-y-32">
+
+        <!-- HEADER SECTION -->
+        <header class="flex flex-col md:flex-row items-center justify-between glass-panel p-10 gap-8 border-b-4 border-blue-500 shadow-2xl overflow-hidden relative">
+            <!-- Decorative light effect -->
+            <div class="absolute -top-24 -left-24 w-48 h-48 bg-blue-600 opacity-10 blur-[100px]"></div>
+            
+            <div class="flex items-center gap-10 relative z-10">
+                <img src="images/NES_DrawingList.png" alt="NES Logo" class="h-24 w-auto logo-glow object-contain">
+                <div>
+                    <div class="section-tag body-text mb-3">User Guide</div>
+                    <h1 class="lvl-1 text-white uppercase tracking-tighter">NES_DRAWINGLIST</h1>
+                    <div class="lvl-3 text-slate-400 font-light tracking-widest mt-2 uppercase">Smart DrawingList Management</div>
+                    <p class="body-text text-slate-500 mt-4 max-w-md text-justify">Hệ thống quản lý danh mục bản vẽ thông minh, hỗ trợ trích xuất Title Block, đồng bộ Sheet Set và xử lý dữ liệu qua ReoGrid.</p>
+                </div>
+            </div>
+            <div class="flex flex-col items-center md:items-end relative z-10">
+                <div class="p-3 glass-panel border-none shadow-none">
+                    <img src="images/NESLOGO.png" alt="DrawingList Icon" class="h-28 logo-glow object-contain">
+                </div>
+                <div class="mt-4 text-right">
+                    <span class="body-text font-bold block uppercase text-slate-500 tracking-tighter">NES TOOL</span>
+                    <span class="lvl-3 text-blue-400 font-black tracking-widest">VERSION 2026.04</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- I. KHỞI ĐỘNG & GIAO DIỆN CHÍNH -->
+        <section class="space-y-12">
+            <div class="text-center space-y-4">
+                <div class="section-tag body-text mx-auto w-max">Phần I</div>
+                <h2 class="lvl-2 text-white italic">Khởi động & Cấu trúc chức năng</h2>
+                <p class="body-text text-slate-400 max-w-3xl mx-auto italic">"Lệnh thực thi: <b class="text-accent">NES_DRAWINGLIST</b> - Quản lý dữ liệu tập trung qua giao diện ReoGrid Mini Excel."</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <!-- Chú thích chức năng chi tiết -->
+                <div class="lg:col-span-6 space-y-8">
+                    <!-- A -->
+                    <div class="feature-card">
+                        <h3 class="lvl-3 text-accent mb-3">A. Nhóm Lựa chọn chế độ (Tab Selection)</h3>
+                        <ul class="body-text text-slate-300 space-y-2">
+                            <li>• <b class="text-white uppercase">Layout Mode:</b> Chế độ quét dữ liệu từ các Tab Layout (mỗi bản vẽ một trang).</li>
+                            <li>• <b class="text-white uppercase">Model Mode:</b> Chế độ quét dữ liệu từ không gian Model (nhiều khung tên trong một mặt bằng).</li>
+                        </ul>
+                    </div>
+
+                    <!-- B -->
+                    <div class="feature-card" style="border-left-color: #f39c12;">
+                        <h3 class="lvl-3 text-orange mb-3">B. Nhóm Truy xuất dữ liệu (Extraction)</h3>
+                        <ul class="body-text text-slate-300 space-y-2">
+                            <li>• <b class="text-white uppercase">Scan Targets in Cad:</b> Cho phép quét vùng và chọn Block mẫu để tự động "bốc" dữ liệu từ khung tên vào bảng.</li>
+                            <li>• <b class="text-white uppercase">Map Attributes:</b> Cấu hình định nghĩa các Thẻ (Tags) tương ứng với "Mã bản vẽ", "Tên bản vẽ",...</li>
+                        </ul>
+                    </div>
+
+                    <!-- C -->
+                    <div class="feature-card" style="border-left-color: #10b981;">
+                        <h3 class="lvl-3 text-green-400 mb-3 uppercase font-black">C. Nhóm Thao tác chính (Actions)</h3>
+                        <ul class="body-text text-slate-300 space-y-2">
+                            <li>• <b class="text-white uppercase">Sync Data to CAD:</b> Cập nhật ngược lại các thông số từ bảng vào khung tên trong AutoCAD.</li>
+                            <li>• <b class="text-white uppercase">Generate Cad Table:</b> Xuất danh sách thành đối tượng Table thực sự trong AutoCAD.</li>
+                            <li>• <b class="text-white uppercase">Export / Import:</b> Chuyển đổi dữ liệu linh hoạt với file Excel (.xlsx).</li>
+                            <li>• <b class="text-white uppercase">Sync From Sheetset:</b> Kết nối và lấy dữ liệu trực tiếp từ hệ thống Sheet Set Manager (SSM).</li>
+                        </ul>
+                    </div>
+
+                    <!-- D -->
+                    <div class="highlight-box">
+                        <h3 class="lvl-3 text-white mb-3">D. Bảng ReoGrid (Khu vực hiển thị trung tâm)</h3>
+                        <p class="body-text text-slate-400 mb-4 italic">"Một Mini Excel tích hợp sẵn trong lòng AutoCAD"</p>
+                        <ul class="body-text text-slate-300 space-y-2">
+                            <li>• <b>Giao diện quen thuộc:</b> Tiêu đề cột (A, B, C...) và số dòng (1, 2, 3...) chuẩn Excel.</li>
+                            <li>• <b>Cột HANDLE (Màu xám):</b> Chứa mã định danh duy nhất của đối tượng CAD. <span class="text-orange italic">Thường bị khóa (Read-only) để bảo vệ liên kết dữ liệu.</span></li>
+                            <li>• <b>Tính tương tác cao:</b> Hỗ trợ đầy đủ các chức năng chỉnh sửa tương tự Excel.</li>
+                            <li>• <b>Cấu trúc cột:</b> STT, Mã bản vẽ, Tên bản vẽ, Lần hiệu chỉnh (Rev), Ngày tháng, Ghi chú.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 sticky top-8">
+                    <div class="p-2 bg-slate-800 rounded-2xl shadow-2xl">
+                        <img src="images/NES_DrawingList2.png" alt="Giao diện bảng" class="ui-screenshot">
+                    </div>
+                    <p class="text-center body-text uppercase tracking-widest text-slate-500 mt-6 font-bold italic">Hình 1: Bảng điều phối trung tâm với hệ thống điều khiển thông minh</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- II. QUY TRÌNH TRUY XUẤT DỮ LIỆU -->
+        <section class="space-y-16 py-16 border-t border-slate-800">
+            <div class="text-center space-y-4">
+                <div class="section-tag body-text mx-auto w-max">Phần II</div>
+                <h2 class="lvl-2 text-white italic">Chi tiết thao tác Truy xuất (Scan)</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- STEP 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-black lvl-3 shadow-lg">1</div>
+                        <h3 class="lvl-3 text-accent uppercase font-black">Scan Targets in Cad</h3>
+                    </div>
+                    <div class="glass-panel p-6 space-y-6">
+                        <div class="flex gap-6 items-center">
+                            <img src="images/NES_DrawingList1.png" alt="Extract SheetTitle" class="w-48 rounded border border-slate-700 shadow-xl object-contain bg-slate-900/50">
+                            <div>
+                                <h4 class="lvl-3 text-white mb-1">B1: Pick Region</h4>
+                                <p class="body-text text-slate-500 italic">
+                                    Chọn [Yes] nếu Tiêu đề bản vẽ là Text/MText. Chọn [No] nếu là thuộc tính Attribute (ATT).
+                                </p>
+                            </div>
+                        </div>
+                        <div class="border-t border-slate-700 pt-6">
+                            <h4 class="lvl-3 text-white mb-1">B2: Pick Reference Block</h4>
+                            <p class="body-text text-slate-500 italic">
+                                Click chọn 1 Block khung tên bất kỳ làm mẫu. Tool sẽ lọc toàn bộ Block cùng tên trong vùng quét.
+                                Tool sẽ hiện bảng Mapping để người dùng định nghĩa các Thẻ (Tags) tương ứng với các cột dữ liệu cần trích xuất.  
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-black lvl-3 shadow-lg">2</div>
+                        <h3 class="lvl-3 text-orange uppercase font-black">Mapping Attributes</h3>
+                    </div>
+                    <div class="p-2 bg-slate-800 rounded-2xl shadow-xl">
+                        <img src="images/NES_DrawingList3.png" alt="Mapping UI" class="ui-screenshot">
+                    </div>
+                </div>
+            </div>
+
+            <!-- LOGIC XỬ LÝ -->
+            <div class="bg-blue-900/10 p-10 rounded-3xl border border-blue-500/20 mt-12">
+                <h3 class="lvl-3 text-white mb-6 border-b border-blue-500/50 pb-2 uppercase tracking-widest font-black">Logic xử lý hệ thống</h3>
+                <ul class="body-text text-slate-300 space-y-4">
+                    <li class="flex items-start gap-4">
+                        <span class="text-accent font-black">●</span>
+                        <p>Hệ thống tự động lọc toàn bộ Block có cùng tên với Block mẫu đã chọn trong vùng quét.</p>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="text-accent font-black">●</span>
+                        <p>Dùng thuật toán sắp xếp tọa độ ($X, Y$) để đánh số thứ tự (STT) một cách khoa học: từ trên xuống dưới và từ trái sang phải.</p>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="text-accent font-black">●</span>
+                        <p>Trích xuất dữ liệu từ các thẻ (Tags) bên trong Block và đổ trực tiếp vào bảng <b>ReoGrid</b>. Người dùng có thể chỉnh sửa nội dung linh hoạt như Excel.</p>
+                    </li>
+                </ul>
+                <div class="mt-8">
+                    <img src="images/NES_DrawingList4.png" alt="ReoGrid Data" class="ui-screenshot max-w-2xl mx-auto shadow-inner">
+                    <p class="text-center body-text text-slate-500 mt-4 italic">Giao diện ReoGrid cho phép chỉnh sửa nội dung trích xuất trực tiếp</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- III. ĐỒNG BỘ & XUẤT BÁO CÁO -->
+        <section class="space-y-16 py-16 border-t border-slate-800 pb-32">
+            <div class="text-center space-y-4">
+                <div class="section-tag body-text mx-auto w-max">Phần III</div>
+                <h2 class="lvl-2 text-white italic">Thao tác & Đồng bộ dữ liệu</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-7">
+                    <img src="images/NES_DrawingList5.png" alt="ReoGrid UI" class="ui-screenshot shadow-2xl">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+                        <div class="feature-card" style="border-left-color: #10b981;">
+                            <h3 class="lvl-3 text-green mb-2">Sync Drawing List From Sheetset</h3>
+                            <p class="body-text text-slate-400">
+                                Tự động đọc danh mục Sheet, Subset và thuộc tính (Description, Category) từ file SSM mà không cần mở bản vẽ.
+                            </p>
+                        </div>
+                        <div class="feature-card" style="border-left-color: #f39c12;">
+                            <h3 class="lvl-3 text-orange mb-2">Excel Export / Import</h3>
+                            <p class="body-text text-slate-400 italic">
+                                <b>Import:</b> Tự động đoán các tiêu đề cột từ file Excel để nạp dữ liệu vào bảng ReoGrid.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 space-y-8">
+                    <div class="bg-green-900/20 p-8 rounded-3xl border border-green-500/30 shadow-xl">
+                        <h3 class="lvl-3 text-green mb-4 border-b border-green-500/50 pb-2 uppercase tracking-widest">Sync Data to Cad</h3>
+                        <p class="body-text text-slate-300 leading-relaxed mb-4 italic">
+                            Cập nhật mọi chỉnh sửa trên ReoGrid (Tên, Số hiệu, Ngày tháng) ngược lại bản vẽ:
+                        </p>
+                        <ul class="body-text space-y-4">
+                            <li class="flex items-start gap-4">
+                                <span class="text-green font-black">●</span>
+                                <p>Tool tìm chính xác Block trên CAD qua mã định danh <b>HANDLE</b> ở cột B.</p>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="text-green font-black">●</span>
+                                <p>Ghi đè giá trị mới vào các Attribute tương ứng một cách an toàn.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Detailed Notes Section -->
+                    <div class="highlight-box bg-red-900/10 border-red-500/30 p-8">
+                        <h3 class="lvl-3 text-red-500 mb-6 uppercase tracking-widest flex items-center gap-3 font-black">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                            Lưu ý dành cho người dùng
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="body-text font-black text-white uppercase mb-2">1. Thiết lập khung tên bản vẽ:</h4>
+                                <ul class="body-text text-slate-400 space-y-2 ml-4 list-disc">
+                                    <li>Tên bản vẽ có thể là <b>Text / MText</b> hoặc <b>Attribute (ATT)</b>.</li>
+                                    <li>Các thông tin khác như Số hiệu, Lần hiệu chỉnh, Ngày đệ trình bắt buộc phải là <b>Attribute (ATT)</b>.</li>
+                                    <li>Người dùng cần chuẩn hóa khung tên chính xác để việc trích xuất đồng bộ đạt hiệu quả.</li>
+                                </ul>
+                            </div>
+                            <div class="border-t border-red-500/20 pt-6">
+                                <h4 class="body-text font-black text-white uppercase mb-2">2. Quản lý cột Handle:</h4>
+                                <p class="body-text text-slate-400 text-justify">
+                                    <b class="text-white">Tuyệt đối không xóa cột Handle</b> khi làm việc trên Excel hoặc ReoGrid. Đây là "sợi dây" liên kết duy nhất để phần mềm nhận diện và cập nhật dữ liệu vào đúng khung tên trên bản vẽ.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="pt-12 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6 pb-12 opacity-80">
+            <div class="body-text uppercase tracking-widest font-black opacity-30">
+                © 2026 NES_Tool System. Hướng dẫn sử dụng người dùng.
+            </div>
+                </footer>
+
+    </div>
+
+</body>
+</html>
